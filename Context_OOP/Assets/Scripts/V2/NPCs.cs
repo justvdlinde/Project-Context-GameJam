@@ -25,17 +25,21 @@ public class NPCs : MonoBehaviour {
     public int location;
 
     public enum Device1 {
-        TV = 1,
-        Microwave = 2,
-        Discoball = 3,
-        Radio = 4
+        TV,
+        Microwave,
+        Discoball,
+        Radio,
+        Computer,
+        Charger
     };
 
     public enum Device2 {
-        Radio = 1,
-        Discoball = 2,
-        Microwave = 3,
-        TV = 4
+        Charger,
+        Computer,
+        Radio,
+        Discoball,
+        Microwave,
+        TV
     };
 
     public Device1 activeDevice1;
@@ -46,7 +50,7 @@ public class NPCs : MonoBehaviour {
         TV = GameObject.Find("TV").GetComponent<Renderer>();
         Microwave = GameObject.Find("Microwave").GetComponent<Renderer>();
         Charger = GameObject.Find("Charger").GetComponent<Renderer>();
-        Computer = GameObject.Find("Computer").GetComponent<Renderer>();
+        Computer = GameObject.Find("Screen 1").GetComponent<Renderer>();
         Radio = GameObject.Find("Radio").GetComponent<Renderer>();
         livLight = GameObject.Find("LivingroomLight").GetComponent<Renderer>();
         kitLight = GameObject.Find("KitchenLight").GetComponent<Renderer>();
@@ -60,22 +64,17 @@ public class NPCs : MonoBehaviour {
 	protected void Update () {
         velocity = (transform.position - previous) / Time.deltaTime;
         previous = transform.position;
-        if (velocity.x < 0f)
-        {
+        if (velocity.x < 0f) {
             GetComponent<SpriteRenderer>().flipX = false;
         }
-        if (velocity.x > 0f)
-        {
+        if (velocity.x > 0f) {
             GetComponent<SpriteRenderer>().flipX = true;
         }
     }
 
-    protected virtual void OnTriggerEnter(Collider col)
-    {
-        if (col.gameObject.name == "Bathroom")
-        {
-            if (!bathLight.enabled)
-            {
+    protected virtual void OnTriggerEnter(Collider col) {
+        if (col.gameObject.name == "Bathroom") {
+            if (!bathLight.enabled) {
                 anim.Play("Flip");
                 bathLight.GetComponent<AudioSource>().clip = player.GetComponent<AudioManager>().GetClip(6);
                 bathLight.GetComponent<AudioSource>().Play();
@@ -83,41 +82,32 @@ public class NPCs : MonoBehaviour {
             bathLight.enabled = true;
             location = 0;
         }
-        if (col.gameObject.name == "Bedroom")
-        {
-            if (!bedLight.enabled)
-            {
+
+        if (col.gameObject.name == "Bedroom") {
+            if (!bedLight.enabled) {
+                anim.Play("Flip");
                 bedLight.GetComponent<AudioSource>().clip = player.GetComponent<AudioManager>().GetClip(6);
                 bedLight.GetComponent<AudioSource>().Play();
-                anim.Play("Flip");
+
             }
             bedLight.enabled = true;
             location = 1;
         }
-        if (col.gameObject.name == "Kitchen")
-        {
-            if (!kitLight.enabled)
-            {
+
+        if (col.gameObject.name == "Kitchen") {
+            if (!kitLight.enabled) {
                 anim.Play("Flip");
                 kitLight.GetComponent<AudioSource>().clip = player.GetComponent<AudioManager>().GetClip(6);
                 kitLight.GetComponent<AudioSource>().Play();
             }
-            if (!Microwave.enabled)
-            {
-                Microwave.GetComponent<AudioSource>().clip = player.GetComponent<AudioManager>().GetClip(8);
-                Microwave.GetComponent<AudioSource>().Play();
-            }
-            Microwave.enabled = true;
             kitLight.enabled = true;
             player.GetComponent<AudioSource>().clip = player.GetComponent<AudioManager>().GetClip(13);
             player.GetComponent<AudioSource>().Play();
             location = 2;
         }
 
-        if (col.gameObject.name == "Living Room")
-        {
-            if (!livLight.enabled)
-            {
+        if (col.gameObject.name == "Living Room") {
+            if (!livLight.enabled) {
                 anim.Play("Flip");
                 livLight.GetComponent<AudioSource>().clip = player.GetComponent<AudioManager>().GetClip(6);
                 livLight.GetComponent<AudioSource>().Play();
@@ -149,8 +139,29 @@ public class NPCs : MonoBehaviour {
         if (col.gameObject.name == "Microwave") {
             if (!Microwave.enabled) {
                 if (activeDevice1 == Device1.Microwave || activeDevice2 == Device2.Microwave) {
+                    Microwave.GetComponent<AudioSource>().clip = player.GetComponent<AudioManager>().GetClip(8);
                     Microwave.GetComponent<AudioSource>().Play();
                     Microwave.enabled = true;
+                }
+            }
+            GetComponent<NPC_AudioManager>().location = location;
+        }
+
+        if (col.gameObject.name == "Computer") {
+            if (!Computer.enabled) {
+                if (activeDevice1 == Device1.Computer || activeDevice2 == Device2.Computer) {
+                    Computer.GetComponent<AudioSource>().Play();
+                    Computer.enabled = true;
+                }
+            }
+            GetComponent<NPC_AudioManager>().location = location;
+        }
+
+        if (col.gameObject.name == "Charger") {
+            if (!Charger.enabled) {
+                if (activeDevice1 == Device1.Charger || activeDevice2 == Device2.Charger) {
+                    Charger.GetComponent<AudioSource>().Play();
+                    Charger.enabled = true;
                 }
             }
             GetComponent<NPC_AudioManager>().location = location;

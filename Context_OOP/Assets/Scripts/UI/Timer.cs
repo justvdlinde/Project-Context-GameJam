@@ -30,9 +30,7 @@ public class Timer : MonoBehaviour
 
         paymentText.text = ("€" + payment.ToString() + ",-");
         budgetText.text = ("€" + budget.ToString() + ",-");
-        moneyLeftText.text = ("€" + (budget - payment).ToString() + ",-");
-
-        
+        moneyLeftText.text = ("€" + (budget - payment).ToString() + ",-");   
 
         if (timeLeft < 0) {
             Time.timeScale = 0;
@@ -44,12 +42,6 @@ public class Timer : MonoBehaviour
                 greenBill.enabled = true;
             }
         }
-    }
-    public void newGame(string Menu) {
-        SceneManager.LoadScene(Menu);
-    }
-    public void quitGame() {
-        Application.Quit();
     }
 }
 

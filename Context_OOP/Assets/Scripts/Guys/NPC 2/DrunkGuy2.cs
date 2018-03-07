@@ -13,8 +13,7 @@ public class DrunkGuy2 : NPCs {
         base.Update();
     }
 
-    protected override void OnTriggerEnter(Collider col)
-    {
+    protected override void OnTriggerEnter(Collider col) {
         base.OnTriggerEnter(col);
     }
 

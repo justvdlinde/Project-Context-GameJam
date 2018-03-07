@@ -56,7 +56,7 @@ public class CharController : MonoBehaviour {
 
         happinessText.text = happiness.ToString();
 
-        InvokeRepeating("calPayment", 1.0f, 1.0f);
+        InvokeRepeating("CallPayment", 1.0f, 1.0f);
 
         SR = GetComponent<SpriteRenderer>();
 
@@ -66,49 +66,41 @@ public class CharController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        calHappiness();
+        CallHappiness();
         
-        if (Input.GetMouseButtonDown(0))
-        {
+        if (Input.GetMouseButtonDown(0)) {
             CastRay();
         }
 
-        if (Input.GetKey(KeyCode.A) && stairs != 2)
-        {
+        if (Input.GetKey(KeyCode.A) && stairs != 2) {
             transform.position += Vector3.left * Time.deltaTime * 4;
             SR.flipX = false;
 
             Vector3 currentPosition = this.transform.position;
             if (currentPosition[0] > -6.78f && currentPosition[0] < -6.37f) stairs = 1;
             else if (currentPosition[0] > -13.36f && currentPosition[0] < -12.61f) stairs = 1;
-            else if (currentPosition[0] < -13.90f && currentPosition[1] == -5.9f)
-            {
+            else if (currentPosition[0] < -13.90f && currentPosition[1] == -5.9f) {
                 currentPosition[0] = -13.90f;
                 transform.position = currentPosition;
             }
-            else if (currentPosition[0] < -13.90f && currentPosition[1] == 1.7f)
-            {
+            else if (currentPosition[0] < -13.90f && currentPosition[1] == 1.7f) {
                 currentPosition[0] = -13.90f;
                 transform.position = currentPosition;
             }
             else stairs = 0;
-
         }
-        if (Input.GetKey(KeyCode.D) && stairs != 2)
-        {
+        if (Input.GetKey(KeyCode.D) && stairs != 2) {
             transform.position += Vector3.right * Time.deltaTime * 4;
             SR.flipX = true;
 
             Vector3 currentPosition = this.transform.position;
             if (currentPosition[0] > -6.78f && currentPosition[0] < -6.37f) stairs = 1;
             else if (currentPosition[0] > -13.36f && currentPosition[0] < -12.61f) stairs = 1;
-            else if (currentPosition[0] > 16.20f && currentPosition[1] == -5.9f)
-            {
+            else if (currentPosition[0] > 16.20f && currentPosition[1] == -5.9f) {
                 currentPosition[0] = 16.20f;
                 transform.position = currentPosition;
             }
-            else if (currentPosition[0] > -5.60f && currentPosition[1] == 1.7f)
-            {
+            else if (currentPosition[0] > -5.60f && currentPosition[1] == 1.7f) {
                 currentPosition[0] = -5.60f;
                 transform.position = currentPosition;
             }
@@ -116,49 +108,38 @@ public class CharController : MonoBehaviour {
 
         }
 
-        if (Input.GetKey(KeyCode.W) && stairs != 0)
-        {
+        if (Input.GetKey(KeyCode.W) && stairs != 0) {
             Vector3 currentPosition = this.transform.position;
-            if (currentPosition[1] >= -5.9f && currentPosition[1] < 1.7f)
-            {
+            if (currentPosition[1] >= -5.9f && currentPosition[1] < 1.7f) {
                 transform.position += Vector3.up * Time.deltaTime * 4;
-                if ((transform.position)[1] > 1.7f)
-                {
+                if ((transform.position)[1] > 1.7f) {
                     currentPosition[1] = 1.7f;
                     transform.position = currentPosition;
                 }
                 stairs = 2;
             }
-            else
-            {
+            else {
                 stairs = 1;
             }
         }
 
-        if (Input.GetKey(KeyCode.S) && stairs != 0)
-        {
+        if (Input.GetKey(KeyCode.S) && stairs != 0) {
             Vector3 currentPosition = this.transform.position;
-            if (currentPosition[1] > -5.9f && currentPosition[1] <= 1.7f)
-            {
+            if (currentPosition[1] > -5.9f && currentPosition[1] <= 1.7f) {
                 transform.position += Vector3.down * Time.deltaTime * 4;
-                if ((transform.position)[1] < -5.9f)
-                {
+                if ((transform.position)[1] < -5.9f) {
                     currentPosition[1] = -5.9f;
                     transform.position = currentPosition;
                 }
                 stairs = 2;
             }
-            else
-            {
+            else {
                 stairs = 1;
             }
         }
-
-
     }
 
-    public void calHappiness()
-    {
+    public void CallHappiness() {
         int totalH = 10;
         totalH += GuyHappiness(guy1.location);
         totalH += GuyHappiness(guy2.location);
@@ -168,11 +149,9 @@ public class CharController : MonoBehaviour {
         happinessBar.size = (float)totalH / 19;
         G1.t = (float)totalH / 19;
     }
-    int GuyHappiness(int i)
-    {
+    int GuyHappiness(int i) {
         int score = 0;
-        switch (i)
-        {
+        switch (i) {
             case 0: //bathroom
                 if (bathLight.enabled == true) score++; else score--;
                 if (Radio.enabled == true) score++; else score--;
@@ -198,8 +177,7 @@ public class CharController : MonoBehaviour {
         return score;
     }
 
-    void calPayment()
-    {
+    void CallPayment() {
         if (TV.enabled == true) payment += 0.03f;
         if (Microwave.enabled == true) payment += 0.19f;
         if (Charger.enabled == true) payment += 0.32f;
@@ -243,7 +221,6 @@ public class CharController : MonoBehaviour {
                 bathLight.GetComponent<AudioSource>().clip = GetComponent<AudioManager>().GetClip(6);
                 bathLight.GetComponent<AudioSource>().Play();
             }
-
             if (hit.collider.gameObject.name == "Discoball" && inLiv) {
                 Discoball.enabled = false;
                 Discoball.GetComponent<AudioSource>().clip = GetComponent<AudioManager>().GetClip(2);
@@ -270,6 +247,9 @@ public class CharController : MonoBehaviour {
             if (hit.collider.gameObject.name == "TV" && inLiv) {
                 TV.enabled = false;
                 TV.GetComponent<AudioSource>().Play();
+            }
+            if (hit.collider.gameObject.name == "Microwave") {
+                print("yep");
             }
         }
     }
