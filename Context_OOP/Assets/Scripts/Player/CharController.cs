@@ -188,6 +188,7 @@ public class CharController : MonoBehaviour {
         if (kitLight.enabled == true) payment += 0.01f;
         if (bedLight.enabled == true) payment += 0.01f;
         if (bathLight.enabled == true) payment += 0.01f;
+
         payment_double = System.Math.Round(payment, 2);
         paymentText.text = (payment_double + 10).ToString();
         paymentBar.size = (float)payment_double / 30;

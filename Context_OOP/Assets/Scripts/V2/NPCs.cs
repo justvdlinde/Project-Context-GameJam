@@ -14,6 +14,7 @@ public class NPCs : MonoBehaviour {
     protected Renderer Computer;
     protected Renderer Discoball;
     protected Renderer Radio;
+    protected Renderer SpeechBubble;
 
     protected Renderer livLight;
     protected Renderer kitLight;
@@ -48,10 +49,11 @@ public class NPCs : MonoBehaviour {
     // Use this for initialization
     protected void Start () {
         TV = GameObject.Find("TV").GetComponent<Renderer>();
-        Microwave = GameObject.Find("Microwave").GetComponent<Renderer>();
-        Charger = GameObject.Find("Charger").GetComponent<Renderer>();
+        Microwave = GameObject.Find("MicrowaveWaves").GetComponent<Renderer>();
+        Charger = GameObject.Find("Charger 1").GetComponent<Renderer>();
         Computer = GameObject.Find("Screen 1").GetComponent<Renderer>();
-        Radio = GameObject.Find("Radio").GetComponent<Renderer>();
+        Radio = GameObject.Find("MusicNotes1").GetComponent<Renderer>();
+        Discoball = GameObject.Find("DiscoLights").GetComponent<Renderer>();
         livLight = GameObject.Find("LivingroomLight").GetComponent<Renderer>();
         kitLight = GameObject.Find("KitchenLight").GetComponent<Renderer>();
         bedLight = GameObject.Find("BedroomLight").GetComponent<Renderer>();
@@ -166,5 +168,6 @@ public class NPCs : MonoBehaviour {
             }
             GetComponent<NPC_AudioManager>().location = location;
         }
+        
     }
 }

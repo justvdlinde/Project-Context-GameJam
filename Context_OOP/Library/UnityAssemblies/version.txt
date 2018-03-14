@@ -1,4 +1,4 @@
-2017.3.0f3:3.3.0.2
+2017.3.1f1:3.3.0.2
 StandaloneWindows64
 C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll
 C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.dll
@@ -48,8 +48,6 @@ C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWe
 C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestWWWModule.dll
 C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.VideoModule.dll
 C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.WindModule.dll
-C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Editor/Vuforia.UnityExtensions.Editor.dll
-C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Runtime/Vuforia.UnityExtensions.dll
 C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
 C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll
 C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
@@ -70,7 +68,6 @@ C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTrack
 C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll
 C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll
 C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll
-C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll
 C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll
 C:/Users/JustLaptop/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll

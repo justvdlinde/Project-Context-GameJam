@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class DrunkGuy3 : NPCs
 {
+    private bool canDialogue = true;
+    public Renderer speechBubble;
 
-    // Use this for initialization
     new void Start()
     {
         base.Start();
+        speechBubble = GameObject.Find("Drunk Guy 3 Bubble").GetComponent<Renderer>();
     }
 
     new void Update()
@@ -21,4 +23,18 @@ public class DrunkGuy3 : NPCs
         base.OnTriggerEnter(col);
     }
 
+ private void OnTriggerStay(Collider col) {
+        if (col.gameObject.name == "Player") {
+            if(canDialogue) { 
+                speechBubble.enabled = true;
+                if (Input.GetKey(KeyCode.Space)) {
+                    GetComponent<DialogueTrigger>().TriggerDialogue();
+                    canDialogue = false;
+                }
+            }   
+        }
+    }
+    private void OnTriggerExit(Collider other) {
+        speechBubble.enabled = false;
+    }
 }
